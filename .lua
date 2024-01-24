@@ -23,8 +23,8 @@ T1:Dropdown("Select hatch amount",{"1","3","5"},function(value)
         _G.hatchamount = tonumber(value)
 end)
 
-lib:HookFunction(function(method,self,args)
-    if method == "FireServer" and self == "HATCHEDCOUNT" then
+lib:HookCalled(function(self,args)
+    if self == "HATCHEDCOUNT" then
       game:GetService("ReplicatedStorage")["GUIOPENEGG"]["HATCHEDCOUNT"]:FireServer(_G.hatchamount)
     end
 end)
