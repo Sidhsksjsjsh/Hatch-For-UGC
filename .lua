@@ -25,6 +25,6 @@ end)
 
 lib:HookCalled(function(self,args)
     if self == "HATCHEDCOUNT" then
-      game:GetService("ReplicatedStorage")["GUIOPENEGG"]["HATCHEDCOUNT"]:FireServer(_G.hatchamount)
+      args[1] = _G.hatchamount
     end
 end)
