@@ -19,36 +19,12 @@ T1:Toggle("Hatch UGC 2",false,function(value)
     end
 end)
 
-T1:Toggle("Auto log when u got Legendary, Insane and UGC",false,function(value)
-    _G.ugcnotify = value
+T1:Dropdown("Select hatch amount",{"1","3","5"},function(value)
+        _G.hatchamount = tonumber(value)
 end)
 
 lib:HookFunction(function(method,self,args)
-    if method == "FireServer" and self == "INSANE" and _G.ugcnotify == true then
-      T2:Label("Congrats you got INSANE!")
-    elseif method == "FireServer" and self == "UGC1" and _G.ugcnotify == true then
-      T2:Label("Congrats you got UGC1!")
-    elseif method == "FireServer" and self == "UGC2" and _G.ugcnotify == true then
-      T2:Label("Congrats you got UGC2!")
-    elseif method == "FireServer" and self == "UGC3" and _G.ugcnotify == true then
-      T2:Label("Congrats you got UGC3!")
-    elseif method == "FireServer" and self == "RBXUGC1" and _G.ugcnotify == true then
-      T2:Label("Congrats you got RBXUGC1!")
-    elseif method == "FireServer" and self == "RBXUGC2" and _G.ugcnotify == true then
-      T2:Label("Congrats you got RBXUGC2!")
-    elseif method == "FireServer" and self == "RBXUGC3" and _G.ugcnotify == true then
-      T2:Label("Congrats you got RBXUGC3!")
-    elseif method == "FireServer" and self == "VIPINSANE" and _G.ugcnotify == true then
-      T2:Label("Congrats you got VIPINSANE!")
-    elseif method == "FireServer" and self == "UGC4" and _G.ugcnotify == true then
-      T2:Label("Congrats you got UGC4!")
-    elseif method == "FireServer" and self == "UGC5" and _G.ugcnotify == true then
-      T2:Label("Congrats you got UGC5!")
-    elseif method == "FireServer" and self == "UGC6" and _G.ugcnotify == true then
-      T2:Label("Congrats you got UGC6!")
-    elseif method == "FireServer" and self == "UGC7" and _G.ugcnotify == true then
-      T2:Label("Congrats you got UGC7!")
-    elseif method == "FireServer" and self == "ELITEINSANE" and _G.ugcnotify == true then
-      T2:Label("Congrats you got ELITEINSANE!")
+    if method == "FireServer" and self == "HATCHEDCOUNT" then
+      game:GetService("ReplicatedStorage")["GUIOPENEGG"]["HATCHEDCOUNT"]:FireServer(_G.hatchamount)
     end
 end)
